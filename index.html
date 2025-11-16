@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Love Template</title>
+
 <style>
-/* ---------------- GLOBAL ---------------- */
+/* ---------------- GLOBAL STYLE ---------------- */
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -56,7 +57,7 @@ nav button.active {
   padding: 25px;
   cursor: pointer;
   text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform .3s ease, background .3s ease;
   will-change: transform, background;
 }
 .letter-open {
@@ -72,7 +73,7 @@ nav button.active {
   border-radius: 12px;
 }
 
-/* ---------------- SONG CARD ---------------- */
+/* ---------------- MUSIC ---------------- */
 .song-card {
   display: flex;
   align-items: center;
@@ -115,6 +116,7 @@ nav button.active {
 }
 </style>
 </head>
+
 <body>
 
 <div class="wrapper">
@@ -124,7 +126,7 @@ nav button.active {
     ❤️ Insieme da: <span id="timeTogether"></span>
   </div>
 
-  <!-- NAV -->
+  <!-- NAVIGATION -->
   <nav>
     <button class="tab active" onclick="openTab('letter', this)">❤️ Letter</button>
     <button class="tab" onclick="openTab('music', this)">🎵 Music</button>
@@ -148,28 +150,29 @@ nav button.active {
   <!-- MUSIC -->
   <section id="music">
     <h2 style="color:#2d73d6;">Songs that remind me of you</h2>
+
     <div class="song-card">
       <img class="song-img" src="https://i.imgur.com/HU5Nf8v.jpeg">
       <div class="song-info">
         <h3>Daisies</h3>
         <p>Justin Bieber</p>
       </div>
-      <audio id="s1" controls>
+      <audio controls>
         <source src="" type="audio/mpeg">
-        Your browser does not support audio.
       </audio>
     </div>
+
     <div class="song-card">
       <img class="song-img" src="https://i.imgur.com/7lI5ogb.jpeg">
       <div class="song-info">
         <h3>Fall in love with you</h3>
         <p>Montell</p>
       </div>
-      <audio id="s2" controls>
+      <audio controls>
         <source src="" type="audio/mpeg">
-        Your browser does not support audio.
       </audio>
     </div>
+
   </section>
 
   <!-- NOTES -->
@@ -196,32 +199,33 @@ nav button.active {
 <script>
 // TABS
 function openTab(tab, el){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
   document.getElementById(tab).classList.add("active");
   el.classList.add("active");
 }
 
-// LETTER
+// LETTER OPEN
 function openLetter(){
-  const box=document.querySelector(".letter-box");
-  box.classList.add("letter-open");
-  document.getElementById("real-letter").style.display="block";
+  document.querySelector(".letter-box").classList.add("letter-open");
+  document.getElementById("real-letter").style.display = "block";
 }
 
 // TIMER
 function startTimer(){
-  const startDate=new Date("2023-04-19");
+  const startDate = new Date("2023-04-19");
   setInterval(()=>{
-    const now=new Date();
-    const diff=now-startDate;
-    const days=Math.floor(diff/(1000*60*60*24));
-    const hours=Math.floor(diff/(1000*60*60)%24);
-    const mins=Math.floor(diff/(1000*60)%60);
-    document.getElementById("timeTogether").innerText=`${days} giorni, ${hours} ore, ${mins} min`;
-  },1000);
+    const now = new Date();
+    const diff = now - startDate;
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor(diff/(1000*60*60)%24);
+    const mins = Math.floor(diff/(1000*60)%60);
+    document.getElementById("timeTogether").innerText =
+    `${days} giorni, ${hours} ore, ${mins} min`;
+  }, 1000);
 }
 startTimer();
 </script>
+
 </body>
 </html>
