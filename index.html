@@ -48,23 +48,6 @@ nav button.active {
   color: white;
 }
 
-/* ---------------- PASSWORD ---------------- */
-#password-screen {
-  position: fixed;
-  inset: 0;
-  background: url('https://i.imgur.com/Sle9j1D.jpeg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.password-box {
-  background: rgba(255,255,255,0.9);
-  padding: 30px;
-  border-radius: 18px;
-  text-align: center;
-}
-
 /* ---------------- LETTER ---------------- */
 .letter-box {
   background: #ffe5ef;
@@ -133,15 +116,6 @@ nav button.active {
 </style>
 </head>
 <body>
-
-<!-- PASSWORD SCREEN -->
-<div id="password-screen">
-  <div class="password-box">
-    <h2>Enter code</h2>
-    <input type="password" id="pass">
-    <button onclick="checkPass()">Enter</button>
-  </div>
-</div>
 
 <div class="wrapper">
 
@@ -220,13 +194,6 @@ nav button.active {
 </div>
 
 <script>
-// PASSWORD
-function checkPass() {
-  if(document.getElementById('pass').value==="1234"){
-    document.getElementById('password-screen').style.display="none";
-  }
-}
-
 // TABS
 function openTab(tab, el){
   document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
