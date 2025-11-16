@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Template</title>
+
+<style>
+
+/* ---------------- GLOBAL ---------------- */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: url('https://i.imgur.com/3UVL4tH.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+.wrapper {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding-top: 20px;
+}
+
+/* Frosted glass card */
+section {
+  background: rgba(255,255,255,0.65);
+  padding: 25px;
+  border-radius: 18px;
+  display: none;
+  animation: fade 0.4s ease;
+}
+section.active { display: block; }
+
+@keyframes fade { from {opacity:0;} to {opacity:1;} }
+
+/* Tabs */
+nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+nav button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #ffd6e8;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+nav button.active {
+  background: #ff9cc3;
+  color: white;
+}
+
+/* ---------------- PASSWORD ---------------- */
+#password-screen {
+  position: fixed;
+  inset: 0;
+  background: url('https://i.imgur.com/Sle9j1D.jpeg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-box {
+  background: rgba(255,255,255,0.8);
+  padding: 30px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+/* ---------------- LETTER ---------------- */
+.letter-box {
+  background: #ffe5ef;
+  border: 2px dashed #ff8fb3;
+  border-radius: 18px;
+  padding: 25px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+/* CLOSED LETTER STYLE */
+.letter-closed {
+  transform: scale(1);
+}
+.letter-open {
+  animation: openLetter 0.5s forwards ease-out;
+}
+
+@keyframes openLetter {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); background:#fff0f6; border-color:#ff5e95; }
+}
+
+/* Hidden message */
+#real-letter {
+  display: none;
+  margin-top: 15px;
+  padding: 18px;
+  background: #fff0f7;
+  border-radius: 12px;
+  animation: fade 0.4s ease;
+}
+
+/* ---------------- SONG CARD (Spotify style) ---------------- */
+.song-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #e6f2ff;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 15px;
+}
+
+.song-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.song-info h3 {
+  margin: 0;
+  color: #2d73d6;
+}
+.song-info p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* ---------------- GALLERY ---------------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.gallery-grid img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* ---------------- TIMER ---------------- */
+.timer-box {
+  padding: 18px;
+  background: #ffe5ef;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* MOBILE FIX */
+@media(max-width:600px) {
+  .song-card { flex-direction: column; text-align:center; }
+  .gallery-grid { grid-template-columns: repeat(2,1fr); }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- -------------------- PASSWORD SCREEN -------------------- -->
+<div id="password-screen">
+  <div class="password-box">
+    <h2>Enter code</h2>
+    <input type="password" id="pass">
+    <button onclick="checkPass()">Enter</button>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <!-- LONG DISTANCE TIMER -->
+  <div class="timer-box">
+    ❤️ Insieme da: <span id="timeTogether"></span>
+  </div>
+
+  <nav>
+    <button class="tab active" onclick="openTab('letter')">❤️ Letter</button>
+    <button class="tab" onclick="openTab('music')">🎵 Music</button>
+    <button class="tab" onclick="openTab('notes')">📄 Notes</button>
+    <button class="tab" onclick="openTab('gallery')">🌷 Gallery</button>
+  </nav>
+
+  <!-- LETTER -->
+  <section id="letter" class="active">
+    <h2 style="color:#b3004b;">My Dearest</h2>
+
+    <div class="letter-box letter-closed" onclick="openLetter()">
+      💌 A Letter For You — tap to open
+    </div>
+
+    <div id="real-letter">
+      Ti amo più di qualsiasi parola possa descrivere.  
+      Sei la mia pace, il mio sorriso e la mia casa.  
+      Grazie per essere tu. 💗
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music">
+    <h2 style="color:#2d73d6;">Songs that remind me of you</h2>
+
+    <div class="song-card">
+      <img class="song-img" src="https://i.imgur.com/HU5Nf8v.jpeg">
+      <div class="song-info">
+        <h3>Daisies</h3>
+        <p>Justin Bieber</p>
+      </div>
+      <audio id="s1" src=""></audio>
+      <button onclick="s1.play()">▶</button>
+      <button onclick="s1.pause()">⏸</button>
+    </div>
+
+    <div class="song-card">
+      <img class="song-img" src="https://i.imgur.com/7lI5ogb.jpeg">
+      <div class="song-info">
+        <h3>Fall in love with you</h3>
+        <p>Montell</p>
+      </div>
+      <audio id="s2" src=""></audio>
+      <button onclick="s2.play()">▶</button>
+      <button onclick="s2.pause()">⏸</button>
+    </div>
+
+  </section>
+
+  <!-- NOTES -->
+  <section id="notes">
+    <h2 style="color:#b3004b;">Notes</h2>
+    <p>Write personal notes here…</p>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2 style="color:#b3004b;">Flowers for you</h2>
+    <div class="gallery-grid">
+      <img src="https://i.imgur.com/ux0RqEd.jpeg">
+      <img src="https://i.imgur.com/0t8swJw.jpeg">
+      <img src="https://i.imgur.com/LmEqH0q.jpeg">
+      <img src="https://i.imgur.com/sjz9WJd.jpeg">
+      <img src="https://i.imgur.com/UXuNGeN.jpeg">
+      <img src="https://i.imgur.com/aOCYxQO.jpeg">
+    </div>
+  </section>
+
+</div>
+
+<script>
+
+/* ---------------- PASSWORD ---------------- */
+function checkPass() {
+  if (document.getElementById('pass').value === "1234") {
+    document.getElementById('password-screen').style.display = "none";
+  }
+}
+
+/* ---------------- TABS ---------------- */
+function openTab(tab) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+  document.getElementById(tab).classList.add("active");
+  event.target.classList.add("active");
+}
+
+/* ---------------- LETTER OPEN ---------------- */
+function openLetter() {
+  let box = document.querySelector(".letter-box");
+  box.classList.add("letter-open");
+  document.getElementById("real-letter").style.display = "block";
+}
+
+/* ---------------- TIMER ---------------- */
+function startTimer() {
+  const startDate = new Date("2023-04-19"); // ← MODIFICA la data
+  setInterval(() => {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor(diff / (1000*60*60) % 24);
+    const mins = Math.floor(diff / (1000*60) % 60);
+
+    document.getElementById("timeTogether").innerText =
+      `${days} giorni, ${hours} ore, ${mins} min`;
+  }, 1000);
+}
+startTimer();
+
+</script>
+</body>
+</html>
