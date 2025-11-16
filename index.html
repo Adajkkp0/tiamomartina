@@ -1,4 +1,4 @@
-se<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -43,11 +43,12 @@ nav button.active { background: #ff9cc3; color: white; }
 
   <nav>
     <button class="tab active" onclick="openTab('letter', this)">❤️ Lettera</button>
-    <button class="tab" onclick="openTab('music', this)">🎵 Canzone che mi ricordano di te</button>
+    <button class="tab" onclick="openTab('music', this)">🎵 Canzone che mi ricorda di te</button>
     <button class="tab" onclick="openTab('notes', this)">📄 Messaggini</button>
     <button class="tab" onclick="openTab('gallery', this)">🌷 Galleria</button>
   </nav>
 
+  <!-- LETTER -->
   <section id="letter" class="active">
     <h2 style="color:#b3004b;">Amoremio</h2>
     <div class="letter-box" onclick="openLetter()">💌 Una lettera per te — toccala per aprirla</div>
@@ -56,9 +57,9 @@ nav button.active { background: #ff9cc3; color: white; }
     </div>
   </section>
 
+  <!-- MUSIC -->
   <section id="music">
-    <h2 style="color:#2d73d6;">Songs that remind me of you</h2>
-
+    <h2 style="color:#2d73d6;">Canzone che mi ricorda di te</h2>
     <div class="song-card">
       <img class="song-img" src="assets/daisies.jpg">
       <div class="song-info">
@@ -69,14 +70,15 @@ nav button.active { background: #ff9cc3; color: white; }
         <source src="assets/daisies.mp3" type="audio/mpeg">
       </audio>
     </div>
-
   </section>
 
+  <!-- NOTES -->
   <section id="notes">
-    <h2 style="color:#b3004b;">Notes</h2>
-    <p>Write personal notes here…</p>
+    <h2 style="color:#b3004b;">Messaggini</h2>
+    <p>Scrivi qui i tuoi messaggi personali…</p>
   </section>
 
+  <!-- GALLERY -->
   <section id="gallery">
     <h2 style="color:#b3004b;">Flowers for you</h2>
     <div class="gallery-grid">
@@ -105,7 +107,7 @@ function openLetter(){
 }
 
 function startTimer(){
-  const startDate = new Date("2025-07-30"); // <--- nuova data
+  const startDate = new Date("2025-07-30"); // data d’inizio
   setInterval(()=>{
     const now = new Date();
     const diff = now - startDate;
