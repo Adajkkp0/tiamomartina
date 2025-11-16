@@ -182,10 +182,10 @@ nav button.active {
   </div>
 
   <nav>
-    <button class="tab active" onclick="openTab('letter')">❤️ Letter</button>
-    <button class="tab" onclick="openTab('music')">🎵 Music</button>
-    <button class="tab" onclick="openTab('notes')">📄 Notes</button>
-    <button class="tab" onclick="openTab('gallery')">🌷 Gallery</button>
+    <button class="tab active" onclick="openTab('letter', this)">❤️ Letter</button>
+    <button class="tab" onclick="openTab('music', this)">🎵 Music</button>
+    <button class="tab" onclick="openTab('notes', this)">📄 Notes</button>
+    <button class="tab" onclick="openTab('gallery', this)">🌷 Gallery</button>
   </nav>
 
   <!-- LETTER -->
@@ -262,11 +262,11 @@ function checkPass() {
 }
 
 /* ---------------- TABS ---------------- */
-function openTab(tab) {
+function openTab(tab, el) {
   document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
   document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
   document.getElementById(tab).classList.add("active");
-  event.target.classList.add("active");
+  el.classList.add("active");
 }
 
 /* ---------------- LETTER OPEN ---------------- */
